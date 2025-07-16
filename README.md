@@ -1,4 +1,4 @@
-# Collecting Raw Links & Metadata (>=8 candidate datasets)
+# Wednesday - Collecting Raw Links & Metadata (>=8 candidate datasets)
 
 Drone/ISR Imagery:
 
@@ -24,3 +24,5 @@ RF Signal/Waveform:
 
 
 
+
+# Thursday - 

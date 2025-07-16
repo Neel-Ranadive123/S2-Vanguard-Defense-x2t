@@ -1,28 +1,3 @@
 # Wednesday - Collecting Raw Links & Metadata (>=8 candidate datasets)
-
-Drone/ISR Imagery:
-
-
-
-
-Aerial/SAR Imagery:
-
-
-
-
-
-
-Automotive Radar:
-
-
-
-
-
-
-RF Signal/Waveform:
-[https://www.kaggle.com/datasets/suraj520/rf-signal-data](url)
-
-
-
-
-# Thursday - 
+Link to Google Spreadsheet for collecting the data: https://docs.google.com/spreadsheets/d/1nD39DLR9FMYzC5cFCOBwyGbFPR4JIy8gQ2a9CWYKFwc/edit?usp=sharing
+(Google Spreadsheet will later be converted to a csv file)

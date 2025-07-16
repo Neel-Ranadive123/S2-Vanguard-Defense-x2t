@@ -1,4 +1,4 @@
-# StarterRepo
+# Collecting Raw Links & Metadata (>=8 candidate datasets)
 
 Drone/ISR Imagery:
 

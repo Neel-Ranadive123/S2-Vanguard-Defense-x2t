@@ -42,3 +42,5 @@ Link to Google Spreadsheet for collecting the data: https://docs.google.com/spre
 Spreadsheet formatted as .csv in the datasets/ folder. The first four datasets will be used. The next 4 are ones we may use, and the others are ones we will not be using
 
 Link to the slideshow with complete progress report: https://docs.google.com/presentation/d/184njLU91znTF1BP2su0kdSaZLsQmjuzjfud8DEtmPNI/edit?usp=sharing
+
+Link to Google Collab Notebook: https://colab.research.google.com/drive/1BnALGR96143C0vbHmFo2HNswllPXOq7r?usp=sharing

@@ -1,0 +1,77 @@
+# GitHub-ready Python script to consolidate 3 datasets into one
+# Save this as `consolidate_datasets.py` in your GitHub repo
+
+import os
+import zipfile
+import shutil
+import json
+from PIL import Image
+
+# === CONFIGURATION ===
+UPLOAD_DIR = "./zips"   # Folder where all 4 input files are placed
+FINAL_DIR = "./dataset_v1"
+IMG_DIR = os.path.join(FINAL_DIR, "images")
+JSON_OUTPUT = os.path.join(FINAL_DIR, "labels.json")
+KIIT_JSON_FILE = "KIIT-MiTA_augmented_filtered_coco.json"
+
+# === Helper Functions ===
+def extract_and_copy(zip_path, prefix, image_dir):
+    temp_dir = "./temp_extract"
+    if os.path.exists(temp_dir):
+        shutil.rmtree(temp_dir)
+    os.makedirs(temp_dir, exist_ok=True)
+
+    with zipfile.ZipFile(zip_path, 'r') as z:
+        z.extractall(temp_dir)
+
+    count = 0
+    for root, _, files in os.walk(temp_dir):
+        for f in files:
+            if f.lower().endswith((".jpg", ".jpeg", ".png")):
+                new_name = f"{prefix}_{f}"
+                shutil.copy2(os.path.join(root, f), os.path.join(image_dir, new_name))
+                count += 1
+    return count
+
+def convert_kiit_labels(json_path, prefix):
+    with open(json_path, "r") as f:
+        coco = json.load(f)
+    for img in coco["images"]:
+        original_name = os.path.basename(img["file_name"])
+        img["file_name"] = f"{prefix}_{original_name}"
+    return coco
+
+# === MAIN ===
+os.makedirs(IMG_DIR, exist_ok=True)
+
+# Dataset file names (must be in UPLOAD_DIR)
+datasets = {
+    "kiit": {
+        "zip": "KIIT-MiTA_augmented_filtered_(5).zip",
+        "prefix": "kiit"
+    },
+    "xview": {
+        "zip": "train X-View.zip",
+        "prefix": "xview"
+    },
+    "fj": {
+        "zip": "Fighter Jet Detection.v1i.yolov8.zip",
+        "prefix": "fj"
+    }
+}
+
+# Process images
+for key, info in datasets.items():
+    zip_path = os.path.join(UPLOAD_DIR, info["zip"])
+    print(f"Processing {zip_path}...")
+    extract_and_copy(zip_path, info["prefix"], IMG_DIR)
+
+# Process COCO labels (KIIT only)
+kiit_json_path = os.path.join(UPLOAD_DIR, KIIT_JSON_FILE)
+kiit_coco = convert_kiit_labels(kiit_json_path, "kiit")
+
+# Save labels
+with open(JSON_OUTPUT, "w") as f:
+    json.dump(kiit_coco, f, indent=2)
+
+print(f"✅ Consolidation complete. Output in: {FINAL_DIR}")

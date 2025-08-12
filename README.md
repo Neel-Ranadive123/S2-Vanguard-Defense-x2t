@@ -54,3 +54,5 @@ Spreadsheet formatted as .csv in the datasets/ folder. The first four datasets w
 Link to the slideshow with complete progress report: https://docs.google.com/presentation/d/184njLU91znTF1BP2su0kdSaZLsQmjuzjfud8DEtmPNI/edit?usp=sharing
 
 Link to Google Collab Notebook: https://colab.research.google.com/drive/1BnALGR96143C0vbHmFo2HNswllPXOq7r?usp=sharing
+
+Link to the Google Drive: https://drive.google.com/drive/folders/108rlWM2AA82NzqxJQGXyIGzyKF2NgchM
